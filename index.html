@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smooth Background Color Change</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease; /* Animasi perubahan warna latar belakang */
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff; /* Warna default tombol */
+        color: white;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="d-flex flex-column container align-items-center justify-content-center"
+    >
+      <h1>CSS MAGICIAN</h1>
+      <button
+        onclick="location.href='./tugas1/index.html'"
+        class="btn btn-primary w-25"
+      >
+        Tugas 1
+      </button>
+    </div>
+
+    <script>
+      // Daftar warna yang akan digunakan
+      const colors = ["#ff5733", "#33ff57", "#5733ff", "#ff5733"];
+
+      // Mengambil elemen body
+      const body = document.querySelector("body");
+
+      // Fungsi untuk mengubah warna latar belakang dengan animasi yang halus
+      function changeBackgroundColor() {
+        const currentColor =
+          body.style.backgroundColor ||
+          window.getComputedStyle(body).backgroundColor;
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        // Memastikan warna baru tidak sama dengan warna saat ini
+        if (randomColor !== currentColor) {
+          body.style.backgroundColor = randomColor;
+        } else {
+          changeBackgroundColor(); // Jika warna sama, coba lagi
+        }
+      }
+
+      // Mengubah warna latar belakang secara otomatis setiap 5 detik
+      setInterval(changeBackgroundColor, 2000);
+    </script>
+  </body>
+</html>
